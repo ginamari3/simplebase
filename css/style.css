@@ -1,3 +1,43 @@
+/*--------------------------------------------
+
+ TABLE OF CONTENTS
+
+# GLOBAL
+    # DEFINE GLOBAL VARIABLES (CUSTOM PROPERTIES)
+    # SET GLOBAL RESETS
+    # SET GLOBAL COLORS
+    # SET GLOBAL TYPOGRAPHY
+
+    ...
+
+    (WILL ADD MORE HERE)
+
+
+--------------------------------------------*/
+
+/* --------------------------------------------
+
+                    GLOBALS 
+
+--------------------------------------------*/
+
+/* SET GLOBAL VARIABLS */
+
+:root {
+
+    /* DEFINE BASE COLORS */
+
+    --color-white: #fff;
+    --color-black: #000;
+
+    /* DEFINE SEMANTIC COLORS */
+
+    --color-body-background: var(--color-white);
+
+}
+
+/* SET GLOBAL COLORS */
+
 body {
-    background-color: pink;
+    background-color: var(--color-body-background);
 }
