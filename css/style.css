@@ -10,6 +10,9 @@
 
     ...
 
+# UI COMPONENTS
+    # CARDS
+
     (WILL ADD MORE HERE)
 
 
@@ -29,10 +32,13 @@
 
     --color-white: #fff;
     --color-black: #000;
+    --color-orange: #e84e1b;
+    --color-blue: blue;
 
     /* DEFINE SEMANTIC COLORS */
 
     --color-body-background: var(--color-white);
+    --color-body-text: var(--color-black);
 
 }
 
@@ -40,4 +46,43 @@
 
 body {
     background-color: var(--color-body-background);
+    color: var(--color-body-text);
+}
+
+/* SET GLOBAL TYPOGRAPHY */
+
+/* TYPOGRAPHY */
+
+
+
+/* LINKS */
+
+a {
+    color: var(--color-orange);
+}
+
+a:hover {
+    color: var(--color-blue);
+}
+
+/* --------------------------------------------
+
+                    UI COMPONENTS
+
+--------------------------------------------*/
+
+/* CARDS */
+
+.card {
+    border: 1px solid red;
+    display: inline-block;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+.color-swatch {
+    color: red;
+    background-color: var(--color-blue);
+    width: 150px;
+    height: 150px;
 }
