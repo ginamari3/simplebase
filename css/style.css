@@ -8,11 +8,13 @@
     # SET GLOBAL COLORS
     # SET GLOBAL TYPOGRAPHY
     # GLOBAL MEDIA (Images, video, svg)
+    # GLOBAL HELPERS
 
     ...
 
 # UI COMPONENTS
     # CARDS
+    # HR (HORIZONTAL RULE)
 
     (WILL ADD MORE HERE)
 
@@ -52,9 +54,30 @@ body {
 
 /* SET GLOBAL TYPOGRAPHY */
 
+body {
+    font-family: var(--font-body);
+    font-size: 100%;
+    line-height: 1.4;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-headings);
+}
+
 /* TYPOGRAPHY */
 
 
+/* GLOBAL MEDIA */
+
+/* IMAGES */
+
+img {
+    max-width: 100%;
+    height: auto;
+}
 
 /* LINKS */
 
@@ -64,6 +87,13 @@ a {
 
 a:hover {
     color: var(--color-blue);
+}
+
+
+/* GLOBAL HELPERS */
+
+.text-centered {
+    text-align: center;
 }
 
 /* --------------------------------------------
@@ -86,4 +116,12 @@ a:hover {
     background-color: var(--color-blue);
     width: 150px;
     height: 150px;
+}
+
+/* HR (HORIZONTAL RULE) */
+
+HR {
+    border: none;
+    border-top: var(--border-thickness) solid var(--color-border);
+    margin: var(--unit-l) 0;
 }
