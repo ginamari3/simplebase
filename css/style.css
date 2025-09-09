@@ -9,8 +9,12 @@
     # SET GLOBAL TYPOGRAPHY
     # GLOBAL MEDIA (Images, video, svg)
     # GLOBAL HELPERS
+    # GLOBAL RESETS
 
     ...
+# LAYOUT
+    # CONTAINER
+    # GRID SYSTEM (12 COLUMN)
 
 # UI COMPONENTS
     # CARDS
@@ -52,6 +56,21 @@ body {
     color: var(--color-body-text);
 }
 
+/* SIZING UNITS */
+--unit-2xs: 0.25em;
+--unitxs: 0.5em;
+
+
+/* GLOBAL FONTS */
+
+--font-body: system-ui,
+Helvetica,
+arial,
+sans-serif;
+--font-headings: Georgia,
+Times,
+"Times New Roman";
+
 /* SET GLOBAL TYPOGRAPHY */
 
 body {
@@ -83,6 +102,11 @@ img {
 
 a {
     color: var(--color-orange);
+    text-decoration-color: var(--color-primary-dark);
+    text-underline-offset: .135em;
+    /* can be changed/removed */
+    text-decoration-thickness: 0.5em;
+    /* thickness of line */
 }
 
 a:hover {
@@ -94,6 +118,47 @@ a:hover {
 
 .text-centered {
     text-align: center;
+}
+
+/* GLOBAL RESETS */
+
+/* Remove the default 8pm margin on body */
+body {
+    margin: 0;
+}
+
+/* Set all elements to box sixing border box */
+* {
+    box-sizing: border-box;
+}
+
+
+/* --------------------------------------------
+
+                    LAYOUT
+
+--------------------------------------------*/
+
+/* CONTAINER */
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    border: 1px solid red;
+}
+
+
+/*  GRID SYSTEM  */
+
+.row>* {
+    margin-block: var(--unit-s);
+}
+
+/* FOR DEMO PURPOSES ONLY */
+.row.demo>* {
+    background-color: #eee;
+    text-align: center;
+    padding: var(--unit-s);
 }
 
 /* --------------------------------------------
