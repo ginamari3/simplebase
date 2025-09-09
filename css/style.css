@@ -35,158 +35,211 @@
 
 :root {
 
-    /* DEFINE BASE COLORS */
+    /* BASE COLORS */
+    --color-body-background: rgb(255, 255, 255);
+    --color-text-body: rgba(0, 0, 0, 0.8);
+    --color-text-headings: rgb(0, 0, 0);
 
-    --color-white: #fff;
-    --color-black: #000;
-    --color-orange: #e84e1b;
-    --color-blue: blue;
+    --color-links-dark: rgb(102 102 102);
+    --color-links-darker: rgb(0 0 0);
+    --color-links-light: rgb(204 204 204);
+    --color-links-lighter: rgb(255 255 255);
+
+    --color-siteheader-background: transparent;
+    --color-siteheader-links: var(--color-text-headings);
+
+    --color-hero-background: rgb(100 100 100);
+    --color-hero-text: rgb(255 255 255 / .8);
+    --color-hero-headings: rgb(255 255 255 / 1);
+
+    --color-sitefooter-background: rgb(100 100 100);
+    --color-sitefooter-text: rgb(255 255 255 / .8);
+    --color-sitefooter-headings: rgb(255 255 255 / 1);
+    --color-sitefooter-links: rgb(255 255 255);
 
     /* DEFINE SEMANTIC COLORS */
 
     --color-body-background: var(--color-white);
     --color-body-text: var(--color-black);
 
-}
-
-/* SET GLOBAL COLORS */
-
-body {
-    background-color: var(--color-body-background);
-    color: var(--color-body-text);
-}
-
-/* SIZING UNITS */
---unit-2xs: 0.25em;
---unitxs: 0.5em;
 
 
-/* GLOBAL FONTS */
+    /* BASE TYPOGRAPHY */
+    --font-body: system-ui,
+        Helvetica,
+        Arial,
+        sans-serif;
+    --font-headings: system-ui,
+        Helvetica,
+        Arial,
+        sans-serif;
 
---font-body: system-ui,
-Helvetica,
-arial,
-sans-serif;
---font-headings: Georgia,
-Times,
-"Times New Roman";
-
-/* SET GLOBAL TYPOGRAPHY */
-
-body {
-    font-family: var(--font-body);
-    font-size: 100%;
-    line-height: 1.4;
-}
-
-h1,
-h2,
-h3,
-h4 {
-    font-family: var(--font-headings);
-}
-
-/* TYPOGRAPHY */
+    /* SIZING UNITS */
+    --container-width: 1100px;
+    --unit-small: 1em;
+    --unit-medium: 2em;
+    --unit-large: 4em;
 
 
-/* GLOBAL MEDIA */
+    /* SET GLOBAL COLORS */
 
-/* IMAGES */
+    body {
+        background-color: var(--color-body-background);
+        color: var(--color-body-text);
+    }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* LINKS */
-
-a {
-    color: var(--color-orange);
-    text-decoration-color: var(--color-primary-dark);
-    text-underline-offset: .135em;
-    /* can be changed/removed */
-    text-decoration-thickness: 0.5em;
-    /* thickness of line */
-}
-
-a:hover {
-    color: var(--color-blue);
-}
+    /* SIZING UNITS */
+    --unit-2xs: 0.25em;
+    --unit-xs: 0.5em;
 
 
-/* GLOBAL HELPERS */
 
-.text-centered {
-    text-align: center;
-}
+    /* SET GLOBAL TYPOGRAPHY */
 
-/* GLOBAL RESETS */
+    body {
+        font-family: var(--font-body);
+        font-size: 100%;
+        line-height: 1.4;
+    }
 
-/* Remove the default 8pm margin on body */
-body {
-    margin: 0;
-}
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-family: var(--font-headings);
+    }
 
-/* Set all elements to box sixing border box */
-* {
-    box-sizing: border-box;
-}
+    /* TYPOGRAPHY */
 
 
-/* --------------------------------------------
+    /* GLOBAL MEDIA */
+
+    /* IMAGES */
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* LINKS */
+
+    a {
+        color: var(--color-orange);
+        text-decoration-color: var(--color-primary-dark);
+        text-underline-offset: .135em;
+        /* can be changed/removed */
+        text-decoration-thickness: 0.5em;
+        /* thickness of line */
+    }
+
+    a:hover {
+        color: var(--color-blue);
+    }
+
+
+    /* GLOBAL HELPERS */
+
+    .text-centered {
+        text-align: center;
+    }
+
+    /* GLOBAL RESETS */
+
+    /* Remove the default 8pm margin on body */
+    body {
+        margin: 0;
+    }
+
+    /* Set all elements to box sixing border box */
+    * {
+        box-sizing: border-box;
+    }
+
+
+    /* --------------------------------------------
 
                     LAYOUT
 
 --------------------------------------------*/
 
-/* CONTAINER */
+    /* CONTAINER */
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    border: 1px solid red;
-}
+    .container {
+        max-width: 1100px;
+        margin-inline: auto;
+    }
 
 
-/*  GRID SYSTEM  */
+    /*  GRID SYSTEM  */
 
-.row>* {
-    margin-block: var(--unit-s);
-}
+    .row {
+        --grid-gap: var(--unit-s);
+    }
 
-/* FOR DEMO PURPOSES ONLY */
-.row.demo>* {
-    background-color: #eee;
-    text-align: center;
-    padding: var(--unit-s);
-}
+    .row>* {
+        margin-block: var(--unit-s);
+    }
 
-/* --------------------------------------------
+    @media (min-width: 768px) {
+        .row {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+        }
+
+        .one-half {
+            grid-column: auto / span 6;
+
+        }
+    }
+
+    /* CENTERED COLUMNS FOR SOME */
+    .one-half.centered {
+        grid-column: 4 / span 6;
+    }
+
+    .one-third.centered {
+        grid-column: 5 / span 4;
+    }
+
+    .two-thirds.centered {
+        grid-column: 3 / span 8;
+    }
+
+    /* FOR DEMO PURPOSES ONLY */
+    .demo .row>*,
+    .row.demo>* {
+        background-color: #ddd;
+        padding: .5em;
+        text-align: center;
+        margin-top: 0;
+    }
+
+    /* --------------------------------------------
 
                     UI COMPONENTS
 
 --------------------------------------------*/
 
-/* CARDS */
+    /* CARDS */
 
-.card {
-    border: 1px solid red;
-    display: inline-block;
-    padding: 1em;
-    border-radius: 5px;
-}
+    .card {
+        border: 1px solid red;
+        display: inline-block;
+        padding: 1em;
+        border-radius: 5px;
+    }
 
-.color-swatch {
-    color: red;
-    background-color: var(--color-blue);
-    width: 150px;
-    height: 150px;
-}
+    .color-swatch {
+        color: red;
+        background-color: var(--color-blue);
+        width: 150px;
+        height: 150px;
+    }
 
-/* HR (HORIZONTAL RULE) */
+    /* HR (HORIZONTAL RULE) */
 
-HR {
-    border: none;
-    border-top: var(--border-thickness) solid var(--color-border);
-    margin: var(--unit-l) 0;
-}
+    HR {
+        border: none;
+        border-top: var(--border-thickness) solid var(--color-border);
+        margin: var(--unit-l) 0;
+    }
