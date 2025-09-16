@@ -177,6 +177,10 @@ body {
         gap: var(--grid-gap);
     }
 
+    /* COMMONLY USED SEMANTIC COLUMNS */
+    .one-whole {
+        grid-column: auto / span 12;
+    }
 
     .one-half {
         grid-column: auto / span 6;
@@ -194,8 +198,11 @@ body {
         grid-column: auto / span 3;
     }
 
+    .three-fourths {
+        grid-column: auto / span 9;
+    }
 
-    /* SWAPS - WORKS ONLY WITH 2 COLUMNS */
+    /* SWAP (REVERSE COLUMNS) - WORKS ONLY w/ 2 COLUMNS */
     .row.swapped>*:first-child {
         order: 2;
     }
@@ -215,54 +222,54 @@ body {
 
     /* 12 COLUMN CLASS-BASED GRID SYSTEM */
     .col-1 {
-        grid-column: auto/ span1;
+        grid-column: auto / span 1;
     }
 
     .col-2 {
-        grid-column: auto/span2;
+        grid-column: auto / span 2;
     }
 
     .col-3 {
-        grid-column: auto/span3;
+        grid-column: auto / span 3;
     }
 
     .col-4 {
-        grid-column: auto/span4;
+        grid-column: auto / span 4;
     }
 
     .col-5 {
-        grid-column: auto/span5;
+        grid-column: auto / span 5;
     }
 
     .col-6 {
-        grid-column: auto/span6;
+        grid-column: auto / span 6;
     }
 
     .col-7 {
-        grid-column: auto/span7;
+        grid-column: auto / span 7;
     }
 
     .col-8 {
-        grid-column: auto/span8;
+        grid-column: auto / span 8;
     }
 
     .col-9 {
-        grid-column: auto/span9;
+        grid-column: auto / span 9;
     }
 
     .col-10 {
-        grid-column: auto/span10;
+        grid-column: auto / span 10;
     }
 
     .col-11 {
-        grid-column: auto/span11;
+        grid-column: auto / span 11;
     }
 
     .col-12 {
-        grid-column: auto/span12;
+        grid-column: auto / span 12;
     }
 
-    /* PUSHED */
+    /* PUSHES */
     .push-1 {
         grid-column-start: 2;
     }
@@ -306,11 +313,8 @@ body {
     .push-11 {
         grid-column-start: 12;
     }
-
-    .push-12 {
-        grid-column-start: 13;
-    }
 }
+
 
 /* FOR DEMO PURPOSES ONLY */
 .row.demo>* {
@@ -348,11 +352,11 @@ hr {
     margin: var(--unit-xl) 0;
 }
 
-/* CODE BLOCKS */
+/* Code Blocks */
 pre:has(code) {
     background-color: var(--color-black);
     color: var(--color-white);
-    padding: var(--unit-s);
+    padding-inline: var(--unit-m);
     border-radius: var(--border-radius);
     white-space: pre-wrap;
 }
