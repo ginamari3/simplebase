@@ -33,6 +33,7 @@ TABLE OF CONTENTS
 
 # CUSTOM SITE STYLING (OPINIONATED)
     # BODY GRID LAYOUT SYSTEM (header, main, and footer)
+    # HEADER ON TOP OF HERO
     # CUSTOM HERO STYLING
     # CUSTOM PAGE LAYOUT - 2 COLUMNS: ASIDE + MAIN CONTENT
     # STICKYBOX
@@ -51,11 +52,12 @@ TABLE OF CONTENTS
     --color-black: #000;
     --color-black-80: rgb(0 0 0 / .8);
 
+    --color-grey-100: rgb(0 0 0 / .1);
     --color-grey-200: rgb(0 0 0 / .2);
 
     --color-blue-100: #dbeafe;
     --color-blue-400: #3b82f6;
-    --color-blue-900: #1e40af;
+    --color-blue-900: #294491;
 
     --color-green-100: #d1fae5;
     --color-green-200: #a0f2be;
@@ -74,12 +76,15 @@ TABLE OF CONTENTS
     --color-secondary: var(--color-green-400);
 
     /* ACTION COLORS */
-    --color-links: var(--color-green-600);
-    --color-links-hover: var(--color-green-800);
-    --color-links-light: var(--color-green-200);
+    --color-links: var(--color-blue-400);
+    --color-links-hover: var(--color-blue-900);
+    --color-links-light: var(--color-blue-100);
 
+    /* SECTION SPECIFIC */
     --color-siteheader-background: transparent;
-    --color-sitefooter-background: transparent;
+    --color-siteheader-links: var(--color-blue-400);
+    --color-siteheader-links-hover: var(--color-blue-900);
+    --color-sitefooter-background: var(--color-grey-100);
     --color-hero-background: var(--color-blue-100);
 
     /* BORDERS */
@@ -404,7 +409,7 @@ html {
     /* DISPLAY LOGO ON LEFT AND NAV ON RIGHT */
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
     gap: var(--unit-s);
     flex-wrap: wrap;
 }
@@ -453,22 +458,33 @@ html {
 }
 
 .site-nav a {
+    color: var(--color-siteheader-links);
     text-decoration: none;
     font-weight: bold;
     display: block;
     padding: var(--unit-xs);
     padding-block-start: calc(var(--unit-xs) + .1em);
+
+}
+
+.site-nav a:hover {
+    color: var(--color-siteheader-links-hover);
+    text-decoration: underline;
+    text-decoration-color: var(--color-links);
+    text-underline-offset: .5em;
+    text-decoration-thickness: .1em;
 }
 
 /* SHOW MENU BUTTON ON HIGHER LAYER WHEN NAV IS OPEN */
 .site-nav .menubutton {
     position: relative;
     z-index: 100;
-    background-color: transparent;
     border: none;
     font-size: inherit;
     font-family: inherit;
     padding: var(--unit-xs);
+    margin-block-start: var(--unit-xs);
+    background-color: transparent;
 }
 
 /* SMALL SCREENS: SHOW MENU BUTTON, HIDE NAV */
@@ -503,7 +519,7 @@ html {
         top: 0;
         width: 100%;
         height: 100%;
-        background: var(--color-black);
+        background: var(--color-primary);
         transition: translate 0.3s ease-out;
     }
 
@@ -516,14 +532,53 @@ html {
     }
 
     .site-nav[data-menustate="closed"] ul {
-        translate: 0 -100%;
+        translate: 100% 0;
     }
 
+    /* ENABLE SVG ANIMATION FOR THE NAVICON */
+    .site-nav .simple-navicon rect {
+        transition: all .3s ease-out;
+        fill: var(--color-primary);
+    }
+
+    /* CHANGE COLOR OF THE SVG NAVICON WHEN MENU IS OPEN */
     .site-nav[data-menustate="open"] .simple-navicon rect {
         fill: var(--color-white);
     }
 
+    /* ANIMATE NAVICON LINES TO AN X WHEN OPEN */
+    .site-nav .simple-navicon {
+        display: block;
+
+    }
+
+    .site-nav .simple-navicon rect {
+        transform-origin: center;
+        width: 100%;
+    }
+
+    .site-nav[data-menustate="open"] .simple-navicon {
+        position: fixed;
+        top: calc(var(--unit-s) + var(--unit-s));
+        right: calc(var(--unit-s) + var(--unit-xs));
+    }
+
+    .site-nav[data-menustate="open"] .simple-navicon-top {
+        rotate: 45deg;
+        translate: -21% 24%;
+    }
+
+    .site-nav[data-menustate="open"] .simple-navicon-middle {
+        opacity: 0;
+    }
+
+    .site-nav[data-menustate="open"] .simple-navicon-bottom {
+        rotate: -45deg;
+        translate: -21% -24%;
+    }
+
 }
+
 
 /* SITE MAIN */
 .site-main {
@@ -632,6 +687,16 @@ body>* {
     padding-block-start: calc(var(--unit-xs) + .35em);
 }
 
+/* RENDER HEADER ON TOP OF HERO */
+.site-header.on-top-of-hero {
+    position: absolute;
+    width: 100%;
+}
+
+.site-header.on-top-of-hero+.site-main .hero {
+    padding-block-start: calc(var(--unit-3xl) + var(--unit-xl));
+}
+
 /* CUSTOM HERO STYLING */
 .hero h1 {
     font-size: clamp(2.5em, 4vw, 4em);
@@ -664,7 +729,10 @@ body>* {
 }
 
 /* STICKYBOX */
-.stickybox {
-    position: sticky;
-    top: var(--unit-m);
+/* NOTE NEEDED ON SMALL SCREENS, SO IT IS SET INSIDE OF A MEDIA QUERY SO IT ALLOWS THE OVERLAY MENU TO RENDER ON TOP ON SMALL SCREENS */
+@media (width >=768px) {
+    .stickybox {
+        position: sticky;
+        top: var(--unit-m);
+    }
 }
